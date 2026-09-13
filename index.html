@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+   content="width=device-width,
+            initial-scale=1.0,
+            viewport-fit=cover">
+
+<title>Happy Birthday Tinuu 🎂</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: "Poppins", Arial, sans-serif;
+    color: #5b355f;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffd6e7,
+            #e5d4ff,
+            #d4f1ff
+        );
+
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    overflow: hidden;
+}
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding:
+        max(12px, env(safe-area-inset-top))
+        max(12px, env(safe-area-inset-right))
+        max(12px, env(safe-area-inset-bottom))
+        max(12px, env(safe-area-inset-left));
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card {
+    width: min(94vw, 430px);
+
+    height: min(92dvh, 850px);
+
+    min-height: 0;
+
+    background: rgba(255,255,255,0.76);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border-radius: clamp(20px, 5vw, 30px);
+
+    border: 2px solid rgba(255,255,255,0.8);
+
+    box-shadow:
+        0 15px 50px rgba(100,60,100,0.2);
+
+    padding: clamp(15px, 4vw, 30px);
+
+    position: relative;
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+/* Every screen stays inside card */
+
+#startScreen,
+#giftScreen,
+#surpriseScreen {
+    width: 100%;
+    max-height: 100%;
+    text-align: center;
+}
+
+/* =========================
+   TEXT
+========================= */
+
+h1 {
+    font-size: clamp(23px, 6vw, 30px);
+    line-height: 1.2;
+
+    margin-bottom: clamp(6px, 1.5vw, 10px);
+}
+
+.subtitle {
+    font-size: clamp(13px, 3.8vw, 15px);
+
+    color: #86658a;
+
+    line-height: 1.4;
+
+    margin-bottom: clamp(12px, 3vw, 20px);
+}
+
+/* =========================
+   PANDA
+========================= */
+
+.panda {
+    font-size: clamp(65px, 21vw, 105px);
+
+    line-height: 1;
+
+    margin:
+        clamp(3px, 1vw, 10px)
+        0
+        clamp(10px, 2.5vw, 18px);
+
+    animation:
+        pandaBounce
+        2s
+        infinite
+        ease-in-out;
+
+    filter:
+        drop-shadow(
+            0 8px 8px
+            rgba(0,0,0,0.12)
+        );
+}
+
+@keyframes pandaBounce {
+
+    0%,100% {
+        transform:
+            translateY(0)
+            rotate(-2deg);
+    }
+
+    50% {
+        transform:
+            translateY(-12px)
+            rotate(2deg);
+    }
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+button {
+    border: none;
+    outline: none;
+
+    padding:
+        clamp(11px, 3vw, 15px)
+        clamp(20px, 6vw, 28px);
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff6fa5,
+            #b56cff
+        );
+
+    color: white;
+
+    font-size: clamp(14px, 4vw, 16px);
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px
+        rgba(190,80,150,0.3);
+
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* =========================
+   GIFT SCREEN
+========================= */
+
+.gift-area {
+    display: none;
+    width: 100%;
+}
+
+.gift {
+    font-size: clamp(80px, 27vw, 115px);
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    display: inline-block;
+
+    margin:
+        clamp(5px, 2vw, 15px)
+        0;
+
+    animation:
+        giftShake
+        1.5s
+        infinite;
+}
+
+@keyframes giftShake {
+
+    0%,100% {
+        transform: rotate(0);
+    }
+
+    20% {
+        transform: rotate(-7deg);
+    }
+
+    40% {
+        transform: rotate(7deg);
+    }
+
+    60% {
+        transform: rotate(-5deg);
+    }
+
+    80% {
+        transform: rotate(5deg);
+    }
+}
+
+.gift-text {
+    margin-top: 5px;
+
+    font-size: clamp(12px, 3.5vw, 14px);
+}
+
+/* =========================
+   SURPRISE
+========================= */
+
+.surprise {
+    display: none;
+
+    width: 100%;
+
+    animation:
+        appear
+        0.8s
+        ease;
+}
+
+@keyframes appear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.big-title {
+    font-size: clamp(23px, 7vw, 34px);
+
+    line-height: 1.15;
+
+    color: #e84f91;
+
+    margin:
+        4px 0
+        clamp(8px, 2vw, 14px);
+
+    animation:
+        glow
+        2s
+        infinite
+        alternate;
+}
+
+@keyframes glow {
+
+    from {
+        text-shadow:
+            0 0 5px
+            #ffb4d2;
+    }
+
+    to {
+        text-shadow:
+            0 0 20px
+            #ff72aa;
+    }
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message {
+    width: 100%;
+
+    background:
+        rgba(255,255,255,0.7);
+
+    padding:
+        clamp(10px, 3.5vw, 18px);
+
+    border-radius:
+        clamp(15px, 5vw, 20px);
+
+    line-height:
+        clamp(1.4, 1.7, 1.7);
+
+    font-size:
+        clamp(12px, 3.6vw, 15px);
+
+    margin-top: 8px;
+}
+
+/* =========================
+   FINAL TEXT
+========================= */
+
+.final {
+    margin-top:
+        clamp(8px, 2.5vw, 18px);
+
+    font-size:
+        clamp(13px, 4vw, 16px);
+
+    font-weight: bold;
+
+    color: #874c91;
+}
+
+/* =========================
+   BALLOONS
+========================= */
+
+.balloon {
+    position: fixed;
+
+    bottom: -100px;
+
+    font-size:
+        clamp(32px, 10vw, 45px);
+
+    animation:
+        fly
+        8s
+        linear
+        infinite;
+
+    z-index: 1;
+
+    opacity: 0.8;
+
+    pointer-events: none;
+}
+
+@keyframes fly {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(-120vh)
+            rotate(25deg);
+
+        opacity: 0;
+    }
+}
+
+/* =========================
+   STARS
+========================= */
+
+.star {
+    position: fixed;
+
+    color: white;
+
+    font-size:
+        clamp(13px, 4vw, 18px);
+
+    animation:
+        twinkle
+        2s
+        infinite
+        alternate;
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+@keyframes twinkle {
+
+    from {
+        opacity: 0.2;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* =========================
+   CONFETTI
+========================= */
+
+.confetti {
+    position: fixed;
+
+    width: 8px;
+    height: 14px;
+
+    top: -20px;
+
+    z-index: 20;
+
+    animation:
+        confettiFall
+        3s
+        linear
+        forwards;
+
+    pointer-events: none;
+}
+
+@keyframes confettiFall {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0);
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+    }
+}
+
+/* =========================
+   SMALL HEIGHT DEVICES
+========================= */
+
+@media (max-height: 700px) {
+
+    .card {
+        height: 94dvh;
+        padding: 12px;
+    }
+
+    .panda {
+        font-size: 65px;
+        margin: 3px 0 7px;
+    }
+
+    h1 {
+        font-size: 23px;
+    }
+
+    .message {
+        font-size: 12px;
+        line-height: 1.35;
+        padding: 10px;
+    }
+
+    .final {
+        margin-top: 7px;
+        font-size: 13px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .big-title {
+        font-size: 24px;
+    }
+}
+
+/* =========================
+   LANDSCAPE PHONES
+========================= */
+
+@media (orientation: landscape)
+       and (max-height: 600px) {
+
+    .card {
+        width: min(90vw, 700px);
+        height: 94dvh;
+        padding: 10px 25px;
+    }
+
+    .panda {
+        font-size: 55px;
+        margin: 2px 0 5px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+
+    .big-title {
+        font-size: 24px;
+        margin: 3px 0 6px;
+    }
+
+    .message {
+        font-size: 12px;
+        line-height: 1.3;
+        padding: 8px 12px;
+    }
+
+    .final {
+        margin-top: 6px;
+        font-size: 12px;
+    }
+
+    button {
+        padding: 9px 20px;
+        font-size: 13px;
+    }
+
+    .gift {
+        font-size: 70px;
+        margin: 3px;
+    }
+}
+
+/* =========================
+   TABLETS
+========================= */
+
+@media (min-width: 600px) {
+
+    .card {
+        width: min(88vw, 480px);
+    }
+}
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media (min-width: 1000px) {
+
+    .card {
+        width: 430px;
+        height: min(90vh, 850px);
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+```
+<div class="card">
+
+    <!-- START -->
+
+    <div id="startScreen">
+
+        <div class="panda">🐼</div>
+
+        <h1>
+            Hey Tinuu! 💕
+        </h1>
+
+        <div class="subtitle">
+            I have a little surprise for you... ✨
+        </div>
+
+        <button onclick="showGift()">
+            🎀 Open Surprise
+        </button>
+
+    </div>
+
+
+    <!-- GIFT -->
+
+    <div
+        class="gift-area"
+        id="giftScreen">
+
+        <div class="panda">🐼</div>
+
+        <h1>
+            One special gift for you 🎁
+        </h1>
+
+        <div
+            class="gift"
+            onclick="openGift()">
+
+            🎁
+
+        </div>
+
+        <div class="gift-text">
+            Tap the gift...
+            something cute is waiting! 💖
+        </div>
+
+    </div>
+
+
+    <!-- SURPRISE -->
+
+    <div
+        class="surprise"
+        id="surpriseScreen">
+
+        <div class="panda">🐼</div>
+
+        <div class="big-title">
+            🎂 Happy Birthday Tinuu! 🎂
+        </div>
+
+        <div class="message">
+
+            Wishing you a day filled with
+            <b>
+                happiness, laughter and lots of
+                beautiful moments! 💕
+            </b>
+
+            <br><br>
+
+            May all your little wishes come true,
+            and may you always keep that cute
+            smile on your face. ✨
+
+            <br><br>
+
+            I'm really lucky to have a friend
+            like you. 🫶
+
+            <br><br>
+
+            Stay happy, stay crazy and always
+            be the amazing person you are! 🌸
+
+        </div>
+
+        <div class="final">
+            Have the BEST birthday ever! 🥳💗
+        </div>
+
+        <br>
+
+        <button onclick="celebrate()">
+            🎉 Celebrate Again
+        </button>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+<script>
+
+/* =========================
+   SHOW GIFT
+========================= */
+
+function showGift() {
+
+    document.getElementById("startScreen")
+        .style.display = "none";
+
+    document.getElementById("giftScreen")
+        .style.display = "block";
+
+    createBalloons();
+}
+
+
+/* =========================
+   OPEN GIFT
+========================= */
+
+function openGift() {
+
+    document.getElementById("giftScreen")
+        .style.display = "none";
+
+    document.getElementById("surpriseScreen")
+        .style.display = "block";
+
+    confetti();
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+function confetti() {
+
+    for (let i = 0; i < 120; i++) {
+
+        const piece =
+            document.createElement("div");
+
+        piece.className = "confetti";
+
+        piece.style.left =
+            Math.random() * 100 + "vw";
+
+        piece.style.background =
+            [
+                "#ff6fa5",
+                "#b56cff",
+                "#ffd166",
+                "#70d6ff",
+                "#7bd389"
+            ][
+                Math.floor(Math.random() * 5)
+            ];
+
+        piece.style.animationDelay =
+            Math.random() * 1.5 + "s";
+
+        piece.style.transform =
+            "rotate(" +
+            Math.random() * 360 +
+            "deg)";
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => {
+            piece.remove();
+        }, 4000);
+    }
+}
+
+
+/* =========================
+   BALLOONS
+========================= */
+
+function createBalloons() {
+
+    const balloons = [
+        "🎈",
+        "🎈",
+        "🎈",
+        "💗",
+        "🎈",
+        "💜"
+    ];
+
+    balloons.forEach((emoji, index) => {
+
+        const balloon =
+            document.createElement("div");
+
+        balloon.className = "balloon";
+
+        balloon.innerHTML = emoji;
+
+        balloon.style.left =
+            Math.random() * 95 + "vw";
+
+        balloon.style.animationDelay =
+            index * 0.7 + "s";
+
+        document.body.appendChild(balloon);
+
+        setTimeout(() => {
+            balloon.remove();
+        }, 9000);
+
+    });
+}
+
+
+/* =========================
+   CELEBRATE
+========================= */
+
+function celebrate() {
+
+    confetti();
+
+    createBalloons();
+
+}
+
+
+/* =========================
+   BACKGROUND STARS
+========================= */
+
+for (let i = 0; i < 25; i++) {
+
+    const star =
+        document.createElement("div");
+
+    star.className = "star";
+
+    star.innerHTML = "✦";
+
+    star.style.left =
+        Math.random() * 100 + "vw";
+
+    star.style.top =
+        Math.random() * 100 + "vh";
+
+    star.style.animationDelay =
+        Math.random() * 2 + "s";
+
+    document.body.appendChild(star);
+}
+
+</script>
+
+</body>
+</html>
